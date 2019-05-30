@@ -1,6 +1,6 @@
 # Black_and_White_BoardGame
 ### 한양대학교 CSE1017 프로그래밍기초 1학년 1학기 팀프로젝트
-#### TEAM_NAME: 절대태보해@==(^0 ^)@
+#### TEAM_NAME: 절대태보해 @==(^0 ^)@
 #### TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo
 
 ## 1. 게임규칙
@@ -36,7 +36,7 @@
 `make_COM_list()`
 >컴퓨터의 타일을 랜덤으로 섞어줍니다.
 
-`show_tile`
+`show_tile()`
 >튜플로 만들어져있는 `COM_list`를 시각화하여 보여줍니다.<br>
 >ex) □■□□□■■■□■
 
