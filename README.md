@@ -5,7 +5,7 @@
 
 ## 1. 게임규칙
 1. `player`는 `COM`와 게임을 진행합니다.
-2. 각자에게 0 ~ 9까지 적힌 타일이 주어집니다. (홀수 타일은 검은색□, 짝수 타일은 흰색■)
+2. 각자에게 0 ~ 9까지 적힌 타일이 주어집니다. (홀수 타일은 검은색 □, 짝수 타일은 흰색 ■)
 3. `COM`의 타일은 랜덤으로 섞고 타일의 뒷면(색상)을 보여줍니다. 
 4. `player`는 타일 뒷면의 색깔을 보고 왼쪽부터 순서대로 숫자를 유추해야합니다. 
 5. `round`는 총 10`round`로 진행되며 승점의 합이 더 높은 쪽이 승리하게 됩니다.
@@ -13,8 +13,8 @@
 7. 타일의 색이 같은 경우 숫자가 높은 쪽이 `score`1점을 획득합니다.
 8. 타일의 색이 다른 경우 숫자가 높은 쪽이 `score`2점을 획득합니다.
 9. 숫자 0은 숫자9를 이길 수 있습니다.
-10. 게임이 끝난 후 `COM`와 `player`의 `score` 차 만큼 `Burrito`를 획득하게 됩니다.
-<br>*ex) 10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다.*
+10. 게임이 끝난 후 `COM`와 `player`의 `score` 차 만큼 `Burrito`를 획득하게 됩니다.<br>
+_ex) 10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다._
 
 ## 2. 개발 계획
 ### 2.1. 함수 목록
@@ -70,7 +70,6 @@ player  253
 - 편의상 짝수는 `0` 홀수는`1`이라고 칭한다.<br>
 - `list_COM`은 튜플로 구성된 리스트로 생성한다.<br>
 - 매 `round`가 종료되면 `COM`의 숫자를 공개한다.<br>
-<br><br><br>
-
+<br>***<br>
 _Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Rights Reserved._
 _All Pictures and Code Can Not Be Copied or Used Without Permission._
