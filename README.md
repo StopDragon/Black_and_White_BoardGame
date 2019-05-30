@@ -4,9 +4,14 @@
 ## 1. TEAM INTRODUCE
 TEAM_NAME: 절대태보해 @==(^0 ^)@<br>
 TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo<br>
-Game Design: Han_Seung_Woo(dongwoo0307@naver.com)<br>
-Technical Design: Jung_Ji_Yong(jiyong210@gmail.com)<br>
-PR: Ko_Dong_Woo(ntmddn131@naver.com)<br>
+Game Design: 
+>Han_Seung_Woo(dongwoo0307@naver.com)
+>   >github.com/Onewincow
+Technical Design: 
+>Jung_Ji_Yong(jiyong210@gmail.com)<br>
+>   >github.com/StopDragon
+PR: 
+>Ko_Dong_Woo(ntmddn131@naver.com)<br>
 All members participated in development.
 
 ## 2. 게임규칙
