@@ -7,11 +7,14 @@ TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo<br>
 Game Design: 
 >Han_Seung_Woo(dongwoo0307@naver.com)
 >   >github.com/Onewincow
+
 Technical Design: 
->Jung_Ji_Yong(jiyong210@gmail.com)<br>
+>Jung_Ji_Yong(jiyong210@gmail.com)
 >   >github.com/StopDragon
+
 PR: 
->Ko_Dong_Woo(ntmddn131@naver.com)<br>
+>Ko_Dong_Woo(ntmddn131@naver.com)
+
 All members participated in development.
 
 ## 2. 게임규칙
