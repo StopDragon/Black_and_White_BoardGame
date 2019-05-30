@@ -69,9 +69,11 @@ player  253
 - 조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.<br>
 - 편의상 짝수는 `0` 홀수는`1`이라고 칭한다.<br>
 - `list_COM`은 튜플로 구성된 리스트로 생성한다.<br>
-- 매 `round`가 종료되면 `COM`의 숫자를 공개한다.<br>
+- 매 `round`가 종료되면 `COM`의 숫자를 공개한다.
 
-<br>***<br>
+<br>
+***
+<br>
 
 _Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Rights Reserved._
 _All Pictures and Code Can Not Be Copied or Used Without Permission._
