@@ -75,3 +75,4 @@ player  253
 
 _Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Rights Reserved._<br>
 _All Pictures, Code, Idea and etc.. Can Not Be Copied or Used Without Permission._
+_stopdragon@sharpzeorsix.com_
