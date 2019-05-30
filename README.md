@@ -17,7 +17,7 @@
 <br>*ex) 10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다.*
 
 ## 2. 개발 계획
-### 2.1.함수 목록
+### 2.1. 함수 목록
 `split()`
 >게임 로딩 화면입니다.
 
@@ -49,9 +49,12 @@
 `more(message)`
 >`player`에게 `y` 또는 `n`을 입력받아 `y`이면 `True`를 `n`이면 `False`를 리턴합니다.
 
-### 2.2.알고리즘 구상도
+### 2.2. 알고리즘 구상도
 ![algorithm_1](https://github.com/StopDragon/Black_and_White_BoardGame/blob/master/photo/algorithm_1.jpeg?raw=true)
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
 
-## 3.기타 개발 주의 사항
+## 3. 기타 개발 주의 사항
 모든 입력값 비교는 문자(str)로 비교한다.
+조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.
+
+_Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Pictures and Code Can Not Be Copied or Used Without Permission._
