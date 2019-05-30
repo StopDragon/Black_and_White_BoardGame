@@ -51,7 +51,7 @@ _개발 상황에 따라 목록이 변경 될 수 있습니다._
 >`player`에게 `y` 또는 `n`을 입력받아 `y`이면 `True`를 `n`이면 `False`를 리턴합니다.
 
 ### 2.2. 알고리즘 구상도
-![algorithm_1](https://github.com/StopDragon/Black_and_White_BoardGame/blob/master/photo/algorithm_1.jpeg?raw=true)
+![algorithm_1](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_1.jpeg)
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
 
 ### 2.3. Black_and_White 프로토타입
