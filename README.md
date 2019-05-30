@@ -2,7 +2,7 @@
 ### 한양대학교 CSE1017 프로그래밍기초 1학년 1학기 팀프로젝트
 #### TEAM_NAME: 절대태보해@==(^0 ^)@
 #### TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo
-<br>
+
 ## 1. 게임규칙
 1. `player`는 컴퓨터와 게임을 진행합니다.
 2. 각자에게 0 ~ 9까지 적힌 타일이 주어집니다. (홀수 타일은 검은색, 짝수 타일은 흰색)
@@ -15,9 +15,9 @@
 9. 숫자 0은 숫자9를 이길 수 있습니다.
 10. 게임이 끝난 후 `COM`와 `player`의 `score` 차 만큼 `Burrito`를 획득하게 됩니다.
 *10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다.*
-<br>
+
 ***
-<br>
+
 ## 2. 개발 계획
 ### 2.1.함수 목록
 `split()`
@@ -39,7 +39,7 @@
 >컴퓨터의 타일을 랜덤으로 섞어줍니다.
 
 `show_tile`
->튜플로 만들어져있는 `COM_list`를 시각화하여 보여줍니다.<br>
+>튜플로 만들어져있는 `COM_list`를 시각화하여 보여줍니다.
 >ex) □■□□□■■■□■
 
 `store_members(members)`
@@ -50,10 +50,10 @@
 
 `more(message)`
 >`player`에게 `y` 또는 `n`을 입력받아 `y`이면 `True`를 `n`이면 `False`를 리턴합니다.
-<br>
+
 ### 2.2.알고리즘 구상도
 ![algorithm_1](https://github.com/StopDragon/Black_and_White_BoardGame/blob/master/photo/algorithm_1.jpeg?raw=true)
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
-<br>
+
 ## 3.기타 개발 주의 사항
 모든 입력값 비교는 문자(str)로 비교한다.
