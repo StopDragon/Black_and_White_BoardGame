@@ -5,11 +5,11 @@
 TEAM_NAME: 절대태보해 @==(^0 ^)@<br>
 TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo<br>
 >Game Design: 
->   >Han_Seung_Woo(dongwoo0307@naver.com)
+>   >Han_Seung_Woo(dongwoo0307@naver.com)<br>
 >   >github.com/Onewincow
 
 >Technical Design: 
->   >Jung_Ji_Yong(jiyong210@gmail.com)
+>   >Jung_Ji_Yong(jiyong210@gmail.com)<br>
 >   >github.com/StopDragon
 
 >PR: 
