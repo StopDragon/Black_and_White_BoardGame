@@ -5,7 +5,7 @@
 
 ## 1. 게임규칙
 1. `player`는 `COM`와 게임을 진행합니다.
-2. 각자에게 0 ~ 9까지 적힌 타일이 주어집니다. (홀수 타일은 검은색, 짝수 타일은 흰색)
+2. 각자에게 0 ~ 9까지 적힌 타일이 주어집니다. (홀수 타일은 검은색□, 짝수 타일은 흰색■)
 3. `COM`의 타일은 랜덤으로 섞고 타일의 뒷면(색상)을 보여줍니다. 
 4. `player`는 타일 뒷면의 색깔을 보고 왼쪽부터 순서대로 숫자를 유추해야합니다. 
 5. `round`는 총 10`round`로 진행되며 승점의 합이 더 높은 쪽이 승리하게 됩니다.
@@ -53,6 +53,14 @@
 ![algorithm_1](https://github.com/StopDragon/Black_and_White_BoardGame/blob/master/photo/algorithm_1.jpeg?raw=true)
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
 
+### 2.3. 게임 프로토타입
+>[       ROUND 1.        ]
+>        □■□□□■■■□■
+>COM     145
+>player  253 
+>
+>남은 숫자: 1,4,6,7,8,9,0
+
 ## 3. 기타 개발 주의 사항
 - 모든 입력값 비교는 문자(str)로 비교한다.<br>
 - 조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.<br>
@@ -61,4 +69,5 @@
 - 매 `round`가 종료되면 `COM`의 숫자를 공개한다.<br>
 <br><br><br>
 
-_Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Pictures and Code Can Not Be Copied or Used Without Permission._
+_Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Rights Reserved._
+_All Pictures and Code Can Not Be Copied or Used Without Permission._
