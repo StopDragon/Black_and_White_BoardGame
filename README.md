@@ -1,6 +1,8 @@
-# Black_and_White_CardGame
+# Black_and_White_BoardGame
 ### 한양대학교 CSE1017 프로그래밍기초 1학년 1학기 팀프로젝트
-###
+#### TEAM_NAME: 절대태보해@==(^0 ^)@
+#### TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo
+#### 
 ## 게임규칙
 
 1. `player`는 컴퓨터와 게임을 진행합니다.
