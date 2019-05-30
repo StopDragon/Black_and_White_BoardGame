@@ -18,6 +18,7 @@
 
 ## 2. 개발 계획
 ### 2.1. 함수 목록
+_개발 상황에 따라 목록이 변경 될 수 있습니다._
 `split()`
 >게임 로딩 화면입니다.
 
@@ -53,7 +54,8 @@
 ![algorithm_1](https://github.com/StopDragon/Black_and_White_BoardGame/blob/master/photo/algorithm_1.jpeg?raw=true)
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
 
-### 2.3. 게임 프로토타입
+### 2.3. Black_and_White 프로토타입
+_예상 프로토타입임으로 개발 상황에 따라 변경 될 수 있습니다._
 ```
 [       ROUND 1.        ]
         □■□□□■■■□■
