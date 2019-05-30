@@ -1,8 +1,7 @@
 # Black_and_White_BoardGame
 ### 한양대학교 CSE1017 프로그래밍기초 1학년 1학기 팀프로젝트
-#### TEAM_NAME: 절대태보해@==(^0 ^)@
-#### TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo
-#### 
+#### TEAM_NAME: 절대태보해@==(^0 ^)@<br>
+TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo
 ## 게임규칙
 
 1. `player`는 컴퓨터와 게임을 진행합니다.
@@ -15,3 +14,4 @@
 8. 타일의 색이 다른 경우 숫자가 높은 쪽이 `score`2점을 획득합니다.
 9. 숫자 0은 숫자9를 이길 수 있습니다.
 10. 게임이 끝난 후 `COM`와 `player`의 `score` 차 만큼 `Burrito`를 획득하게 됩니다.
+> 10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다.
