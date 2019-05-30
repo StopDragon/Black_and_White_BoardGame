@@ -57,7 +57,7 @@
 - 모든 입력값 비교는 문자(str)로 비교한다.<br>
 - 조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.<br>
 - 짝수는 `0` 홀수는`1`이라고 칭한다.<br>
-- `list_COM`은 튜플로 생성한다.<br>
+- `list_COM`은 튜플로 구성된 리스트로 생성한다.<br>
 - 매 `round`가 종료되면 `COM`의 숫자를 공개한다.<br>
 <br><br><br>
 _Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Pictures and Code Can Not Be Copied or Used Without Permission._
