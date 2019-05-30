@@ -54,13 +54,14 @@
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
 
 ### 2.3. 게임 프로토타입
->[       ROUND 1.        ]
->        □■□□□■■■□■
->COM     145
->player  253 
->
->남은 숫자: 1,4,6,7,8,9,0
+```
+[       ROUND 1.        ]
+        □■□□□■■■□■
+COM     145
+player  253
 
+남은 숫자: 1,4,6,7,8,9,0
+```
 ## 3. 기타 개발 주의 사항
 - 모든 입력값 비교는 문자(str)로 비교한다.<br>
 - 조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.<br>
