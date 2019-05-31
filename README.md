@@ -1,7 +1,7 @@
 # Black_and_White_BoardGame
 ### 한양대학교 CSE1017 프로그래밍기초 1학년 1학기 팀프로젝트
 
-## 1. TEAM INTRODUCE
+## 1. Team Introduce
 TEAM_NAME: 절대태보해 @==(^0 ^)@<br>
 TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo<br>
 >Game Design: 
@@ -17,7 +17,7 @@ TEAM_MEMBERS: Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo<br>
 
 All members participated in development.
 
-## 2. 게임규칙
+## 2. Game Rules
 1. `player`는 `COM`와 게임을 진행합니다.
 2. 각자에게 0 ~ 9까지 적힌 타일이 주어집니다. (홀수 타일은 검은색 □, 짝수 타일은 흰색 ■)
 3. `COM`의 타일은 랜덤으로 섞고 타일의 뒷면(색상)을 보여줍니다. 
@@ -30,8 +30,8 @@ All members participated in development.
 10. 게임이 끝난 후 `COM`와 `player`의 `score` 차 만큼 `Burrito`를 획득하게 됩니다.<br>
 _ex) 10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다._
 
-## 3. 개발 계획
-### 3.1. 함수 목록
+## 3. Development plan
+### 3.1. Function list
 _개발 상황에 따라 목록이 변경 될 수 있습니다._
 `split()`
 >게임 로딩 화면입니다.
@@ -64,11 +64,11 @@ _개발 상황에 따라 목록이 변경 될 수 있습니다._
 `more(message)`
 >`player`에게 `y` 또는 `n`을 입력받아 `y`이면 `True`를 `n`이면 `False`를 리턴합니다.
 
-### 3.2. 알고리즘 구상도
+### 3.2. Algorithm conception
 ![algorithm_1](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_1.jpeg)
 ![algorithm_2](https://raw.githubusercontent.com/StopDragon/Black_and_White_BoardGame/master/photo/algorithm_2.jpeg)
 
-### 3.3. Black_and_White 프로토타입
+### 3.3. Black_and_White prototype
 _예상 프로토타입임으로 개발 상황에 따라 변경 될 수 있습니다._
 ```
 [       ROUND 1.        ]
@@ -78,7 +78,7 @@ player  253
 
 남은 숫자: 1,4,6,7,8,9,0
 ```
-## 4. 기타 개발 주의 사항
+## 4. Other development notes
 - 모든 입력값 비교는 문자(str)로 비교한다.<br>
 - 조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.<br>
 - 편의상 짝수는 `0` 홀수는`1`이라고 칭한다.<br>
