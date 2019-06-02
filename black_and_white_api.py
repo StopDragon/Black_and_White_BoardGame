@@ -2,10 +2,12 @@
 import time
 def clear(): 
     print("\n" * 100)
+def loading():
+    for i in range(20):
+        print('\r절 대 로 딩 해 @(^0 ^)' + '=' * i + '@', end='')
+        time.sleep(0.5)
 def split():
-    print('로딩 화면 나올 곳')
-    time.sleep(3)
-    clear()
+    loading()
     print('\n\n')
     print('______  _               _                        _   _    _  _      _  _         ')
     print('| ___ \| |             | |                      | | | |  | || |    (_)| |        ')
@@ -51,4 +53,5 @@ def gamerulse():
         answer = input(message)
     if answer == '':
         split()
+
 split()
