@@ -75,4 +75,4 @@ def load_members():
         name, passwd, tries, wins, chips = line.strip('\n').split(',')
         members[name] = (passwd,int(tries),float(wins),int(chips))
     file.close()
-    return members 
+    return members  #test
