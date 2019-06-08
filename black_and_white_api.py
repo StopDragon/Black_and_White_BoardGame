@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
-import time
+import time, os
+clear = os.system('cls')
+
 def clear(): 
     print("\n" * 100)
+
+def loading():
+    for i in range(20):
+        print('\r절 대 로 딩 해 @(^0 ^)' + '=' * i + '@', end='')
+        time.sleep(0.5)
+        
 def split():
-    print('로딩 화면 나올 곳')
-    time.sleep(3)
-    clear()
+    loading()
     print('\n\n')
     print('______  _               _                        _   _    _  _      _  _         ')
     print('| ___ \| |             | |                      | | | |  | || |    (_)| |        ')
@@ -51,4 +57,22 @@ def gamerulse():
         answer = input(message)
     if answer == '':
         split()
-split()
+
+def store_members(members):
+    file = open("members.txt","w")
+    names = members.keys()
+    for name in names:
+        passwd, tries, wins, chips = members[name]
+        line = name + ',' + passwd + ',' + \
+               str(tries) + ',' + str(wins) + "," + str(chips) + '\n'              
+        file.write(line)
+    file.close()
+
+def load_members():
+    file = open("members.txt","r")
+    members = {}
+    for line in file:
+        name, passwd, tries, wins, chips = line.strip('\n').split(',')
+        members[name] = (passwd,int(tries),float(wins),int(chips))
+    file.close()
+    return members
