@@ -76,3 +76,4 @@ def load_members():
         members[name] = (passwd,int(tries),float(wins),int(chips))
     file.close()
     return members  
+
