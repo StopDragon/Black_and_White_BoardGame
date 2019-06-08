@@ -2,14 +2,14 @@
 import time, os
 clear = os.system('cls')
 
-def clear(): 
+def clear():
     print("\n" * 100)
 
 def loading():
     for i in range(20):
         print('\r절 대 로 딩 해 @(^0 ^)' + '=' * i + '@', end='')
         time.sleep(0.5)
-        
+
 def split():
     loading()
     print('\n\n')
@@ -64,7 +64,7 @@ def store_members(members):
     for name in names:
         passwd, tries, wins, chips = members[name]
         line = name + ',' + passwd + ',' + \
-               str(tries) + ',' + str(wins) + "," + str(chips) + '\n'              
+               str(tries) + ',' + str(wins) + "," + str(chips) + '\n'
         file.write(line)
     file.close()
 
@@ -75,4 +75,4 @@ def load_members():
         name, passwd, tries, wins, chips = line.strip('\n').split(',')
         members[name] = (passwd,int(tries),float(wins),int(chips))
     file.close()
-    return members
+    return members 
