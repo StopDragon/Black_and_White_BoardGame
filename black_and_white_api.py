@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-import time, os
-clear = os.system('cls')
+#-*- coding: utf-8 -*-
+import time
 
 def clear(): 
     print("\n" * 100)
@@ -12,6 +11,7 @@ def loading():
         
 def split():
     loading()
+    clear
     print('\n\n')
     print('______  _               _                        _   _    _  _      _  _         ')
     print('| ___ \| |             | |                      | | | |  | || |    (_)| |        ')
@@ -31,13 +31,14 @@ def split():
     splitanswer = input('번호를 입력하세요:')
     while not (answer == '1' or answer == '2' or answer == '3' or answer == '0'):
         splitanswer = input('번호를 입력하세요:')
-    #if splitanswer == '0':
-        #gamerulse()
-    #elif splitanswer == '1':
-    #elif splitanswer == '2':
-        #show_top5(members)
-    #elif splitanswer == '3':
-        #raise SystemExit
+    if splitanswer == '0':
+        gamerulse()
+    elif splitanswer == '1':
+        # 게임 실행
+    elif splitanswer == '2':
+        show_top5(members)
+    elif splitanswer == '3':
+        raise SystemExit
 
 def gamerulse():
     clear()
@@ -77,3 +78,44 @@ def load_members():
     file.close()
     return members  
 
+def login(members):
+    username = input("Enter your name: (16 letters max) ")
+    while len(username) > 16:
+        username = input("Enter your name: (16 letters max) ")
+    trypasswd = input("Enter your password: ")
+    if members.get(username): # username이 members에 존재할 때
+        if trypasswd == members[username][0]:   # trypasswd와 username가 일치 할 때
+            tries = members[username][1]
+            wins = members[username][2]
+            chips = members[username][3]
+            print('You played ' + str(tries) + ' games and won ' + str(wins) + ' of them.')
+            print('Your all-time winning percentage is ' + str(divide(wins,tries)) + ' %')
+            if chips >= 0:
+                print('You have ' + str(chips) + ' chips.')
+            else:
+                print('You owe ' + str(abs(chips)) + ' chips.')
+            return username, tries, wins, chips, members
+        else:   # 비밀번호가 일치하지 않을 때
+            return login(members)
+    else:   # username이 members에 존재하지 않을 때
+        print("This name(", username, ") doesn't register",sep='')
+        answerregister = input('Do you want to register?(y/n)')
+        while 
+        if answerregister == 'y':
+            print('Your name is', username)
+            registerpw()
+            if registerpasswd == reregisterpasswd:
+                members[username] = (registerpasswd, 0,0,0)
+                return username, 0, 0, 0, members
+            else:
+                registerpw()
+        elif answerregister == 'n':
+            login(members)
+        else:
+            answerregister = input('Do you want to register?(y/n)')
+
+def registerpw():
+    registerpasswd = input('Enter your password:')
+    reregisterpasswd = input('Enter your password again:')
+    
+split()
