@@ -85,9 +85,13 @@ player  253
 - 조기 게임 종료 조건은 `COM_scoer > player_scoer + (10 - round) * 2`로 한다.<br>
 - 편의상 짝수는 `0` 홀수는`1`이라고 칭한다.<br>
 - `list_COM`은 튜플로 구성된 리스트로 생성한다.<br>
-- 매 `round`가 종료되면 `COM`의 숫자를 공개한다.
+- 매 `round`가 종료되면 `COM`의 숫자를 공개한다.<br>
 - `import getpass`사용해보기<br>
 `passwd = getpass.getpass(input('passwd:'))`
+
+## 5. After development notes
+- 조기 종료 조건을 넣지 못하였다. (다음번에 시간이 되면 넣어보자)<br>
+- 비밀번호를 안보이게 하는 `import getpass`또한 시도하지 못하였다.<br>
 ***
 
 _Copyright 2019. Jung_Ji_Yong, Han_Seung_Woo, Ko_Dong_Woo All Rights Reserved._<br>
