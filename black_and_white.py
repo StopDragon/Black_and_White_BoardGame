@@ -1,15 +1,24 @@
 #-*- coding: utf-8 -*-
-from Black_and_White_api import *
 import time, random
 
 def clear(): 
     print("\n" * 100)
 
 def loading():
-    for i in range(20):
-        print('\r절 대 로 딩 해 @(^0 ^)' + '=' * i + '@', end='')
-        time.sleep(0.5)
-        
+    for _ in range(6):
+        print('\r    절 대 로 딩 해   @(^ O^)@  ', end='')
+        time.sleep(0.15)
+        print('\r    절 대 로 딩 해  @=(^O ^)@  ', end='')
+        time.sleep(0.15)
+        print('\r    절 대 로 딩 해 @==(^O ^)@  ', end='')
+        time.sleep(0.15)
+        print('\r    절 대 로 딩 해   @(^O ^)@  ', end='')
+        time.sleep(0.15)
+        print('\r    절 대 로 딩 해   @(^ O^)=@ ', end='')
+        time.sleep(0.15)
+        print('\r    절 대 로 딩 해   @(^ O^)==@', end='')
+        time.sleep(0.15)
+
 def split():
     print('\n\n')
     print('______  _               _                        _   _    _  _      _  _         ')
@@ -28,7 +37,7 @@ def split():
     print('                                 2. TOP5 랭킹 보기')
     print('                                 3. 종료\n')
     splitanswer = input('번호를 입력하세요:')
-    while not (answer == '1' or answer == '2' or answer == '3' or answer == '0'):
+    while not (splitanswer == '1' or splitanswer == '2' or splitanswer == '3' or splitanswer == '0'):
         splitanswer = input('번호를 입력하세요:')
     if splitanswer == '0':
         gamerulse()
@@ -36,8 +45,7 @@ def split():
         show_top5(members)
     elif splitanswer == '3':
         raise SystemExit
-    elif splitanswer == '1':
-        continue
+    
 
 def gamerulse():
     clear()
@@ -139,7 +147,7 @@ def black_and_white():
         score_com = 0
         print('-----')
 
-        list_com = make_list_com()
+        list_com = make_COM_list()
         list_com_color = []
         list_com_number = []
         list_player = [0,1,2,3,4,5,6,7,8,9]
@@ -221,3 +229,5 @@ def black_and_white():
 
     store_members(members)
     print('다음에 또 찾아주세요!')
+
+black_and_white()
