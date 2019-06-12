@@ -175,7 +175,7 @@ def black_and_white():
             for x in list_com_color:
                 print(x, end='')
 
-            print('/n')
+            print('\n')
             if round > 1:
                 print(list_com_number[0:round-1])
                 print(list_player_sug[0:round-1])
