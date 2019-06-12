@@ -5,10 +5,11 @@ import time
 
 def black_and_white():
     loading()
+    load_members()
     split()
 
     print('게임을 시작하겠습니다.')
-    username, tries, wins, chips, members = login(load_members())
+    username, tries, wins, chips, members = login(members)
     play_more = True
     while play_more == True:
         tries += 1
@@ -99,4 +100,5 @@ def black_and_white():
     store_members(members)
     print('다음에 또 찾아주세요!')
 
-split()
+
+black_and_white()

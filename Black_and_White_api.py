@@ -34,7 +34,7 @@ def split():
     print('                                 2. TOP5 랭킹 보기')
     print('                                 3. 종료\n')
     splitanswer = input('번호를 입력하세요:')
-    while not (answer == '1' or answer == '2' or answer == '3' or answer == '0'):
+    while not (splitanswer == '1' or splitanswer == '2' or splitanswer == '3' or splitanswer == '0'):
         splitanswer = input('번호를 입력하세요:')
     if splitanswer == '0':
         gamerulse()
