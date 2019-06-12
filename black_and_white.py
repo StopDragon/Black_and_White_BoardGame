@@ -1,10 +1,9 @@
 #-*- coding: utf-8 -*-
 import time, random
-
 def clear():
     print("\n" * 100)
 def loading():
-    for _ in range(3):
+    for _ in range(6):
         print('\r       [ 절 대 로 딩 해 ]   @(^ O^)@  ', end='')
         time.sleep(0.15)
         print('\r       [ 절 대 로 딩 해 ]  @=(^O ^)@  ', end='')
@@ -40,6 +39,7 @@ def split():
     if splitanswer == '0':
         gamerulse()
     elif splitanswer == '2':
+        members = load_members()
         show_top5(members)
     elif splitanswer == '3':
         raise SystemExit
@@ -53,7 +53,7 @@ def gamerulse():
     print('6. round당 하나의 숫자를 입력하고 프로그램이 입력한 수와 컴퓨터의 해당 타일을 비교합니다.')
     print('7. 타일의 색이 같은 경우 숫자가 높은 쪽이 점수 1점을 획득합니다.')
     print('8. 타일의 색이 다른 경우 숫자가 높은 쪽이 점수 2점을 획득합니다.')
-    print('9. 숫자 0은 숫자9를 이길 수 있습니다.')
+    print('9. 숫자 0은 숫자9를 이길 수 있습니다. 이 경우는 3점을 획득하게 됩니다.')
     print('10. 게임이 끝난 후 컴퓨터와 player의 점수 차 만큼 Burrito를 획득하게 됩니다.')
     print('ex) 10 vs 8로 player가 이겼다면 10 - 8 = 2 즉, Burrito 2개를 획득합니다.\n')
     answer = input('처음으로 돌아가려면 Enter을 누르세요.')
@@ -65,19 +65,23 @@ def store_members(members):
     file = open("members.txt","w")
     names = members.keys()
     for name in names:
-        passwd, tries, wins, chips = members[name]
-        line = name + ',' + passwd + ',' + \
-               str(tries) + ',' + str(wins) + "," + str(chips) + '\n'
+        passwd, burrito = members[name]
+        line = name + ',' + passwd + ',' + str(burrito) + '\n'
         file.write(line)
     file.close()
 def load_members():
     file = open("members.txt","r")
     members = {}
     for line in file:
-        name, passwd, tries, wins, chips = line.strip('\n').split(',')
-        members[name] = (passwd,int(tries),float(wins),int(chips))
+        name, passwd, burrito = line.strip('\n').split(',')
+        members[name] = (passwd,int(burrito))
     file.close()
     return members
+def more(message):
+    answer = input(message)
+    while not (answer == 'y' or answer == 'n'):
+        answer = input(message)
+    return answer == 'y'
 def login(members):
     username = input("아이디를 입력해주세요: (최대 16글자) ")
     while len(username) > 16:
@@ -85,60 +89,75 @@ def login(members):
     trypasswd = input("비밀번호를 입력해주세요: ")
     if members.get(username): # username이 members에 존재할 때
         if trypasswd == members[username][0]:   # trypasswd와 username가 일치 할 때
-            tries = members[username][1]
-            wins = members[username][2]
-            chips = members[username][3]
-            print('You played ' + str(tries) + ' games and won ' + str(wins) + ' of them.')
-            print('Your all-time winning percentage is ' + str(divide(wins,tries)) + ' %')
-            if chips >= 0:
-                print('You have ' + str(chips) + ' chips.')
+            burrito = members[username][1]
+            if burrito >= 0:
+                print('당신은 ' + str(burrito) + ' 개의 부리또를 갖고있습니다.')
             else:
-                print('You owe ' + str(abs(chips)) + ' chips.')
-            return username, tries, wins, chips, members
+                print('당신은 ' + str(abs(burrito)) + ' 개의 부리또를 빚졌습니다.')
+            return username, burrito, members
         else:   # 비밀번호가 일치하지 않을 때
             return login(members)
     else:   # username이 members에 존재하지 않을 때
-        print("This name(", username, ") doesn't register",sep='')
-        answerregister = input('Do you want to register?(y/n)')
-        if answerregister == 'y':
-            print('Your name is', username)
-            registerpw()
-            if registerpasswd == reregisterpasswd:
-                members[username] = (registerpasswd, 0,0,0)
-                return username, 0, 0, 0, members
-            else:
-                registerpw()
-        elif answerregister == 'n':
-            login(members)
+        print("'", username, "'은(는) 등록되지 않은 아이디입니다.",sep='')
+        answerregister = more('회원가입을 하시겠습니까? (y/n)')
+        if answerregister == True:
+            print('당신의 아이디는', "'", username,"'", '입니다.',sep='')
+            registerpasswd = input('새 비밀번호를 입력하세요:')
+            reregisterpasswd = input('다시 한번 새 비밀번호를 입력하세요:')
+            while registerpasswd != reregisterpasswd:
+                registerpasswd = input('새 비밀번호를 입력하세요:')
+                reregisterpasswd = input('다시 한번 새 비밀번호를 입력하세요:')
+            members[username] = (registerpasswd,0)
+            clear()
+            print('회원가입이 완료되었습니다.')
+            print('3초 후 게임이 시작됩니다.')
+            time.sleep(3)
+            clear()
+            return username, 0, members
         else:
-            answerregister = input('Do you want to register?(y/n)')
-def registerpw():
-    registerpasswd = input('Enter your password:')
-    reregisterpasswd = input('Enter your password again:')
+            return login(members)
+    clear()
 def make_COM_list():
-    deck = [[0, '□'], [1, '■'], [2, '□'], [3, '■'], [4, '□'], [5, '■'], [6, '□'] ,[7, '■'], [8, '□'], [9, '■']]
+    deck = [[0, '■'], [1, '□'], [2, '■'], [3, '□'], [4, '■'], [5, '□'], [6, '■'] ,[7, '□'], [8, '■'], [9, '□']]
     random.shuffle(deck)
     return deck
 def show_top5(members):
     print("-----")
-    sorted_members = sorted(members.items(), key= lambda x:x[1][3], reverse = True)
-    print("All-time Top 5 based on the number of chips earned")
+    sorted_members = sorted(members.items(), key= lambda x:x[1][1], reverse = True)
+    print("부리또를 제일 많이 소유한 TOP5 멤버!")
     if len(sorted_members) < 5:
     	for i in range(len(sorted_members)):
-    			if(sorted_list[i][1][3] > 0):
-    				print(str(i+1) + '.', sorted_members[i][0] ,":", sorted_members[i][1][3])
+    			if(sorted_members[i][1][1] > 0):
+    				print(str(i+1) + '.', sorted_members[i][0] ,":", sorted_members[i][1][1])
     else :
     	for i in range(5):
-    		if(sorted_members[i][1][3] > 0):
-    			print(str(i+1) + '.', sorted_members[i][0] ,":", sorted_members[i][1][3])
-
+    		if(sorted_members[i][1][1] > 0):
+    			print(str(i+1) + '.', sorted_members[i][0] ,":", sorted_members[i][1][1])
+    answer = input('처음으로 돌아가려면 Enter을 누르세요.')
+    while not (answer == ''):
+        answer = input('처음으로 돌아가려면 Enter을 누르세요.')
+    if answer == '':
+        clear()
+        split()
+def ag_show_top5(members):
+    print("-----")
+    sorted_members = sorted(members.items(), key= lambda x:x[1][1], reverse = True)
+    print("부리또를 제일 많이 소유한 TOP5 멤버!")
+    if len(sorted_members) < 5:
+    	for i in range(len(sorted_members)):
+    			if(sorted_members[i][1][1] > 0):
+    				print(str(i+1) + '.', sorted_members[i][0] ,":", sorted_members[i][1][1])
+    else :
+    	for i in range(5):
+    		if(sorted_members[i][1][1] > 0):
+    			print(str(i+1) + '.', sorted_members[i][0] ,":", sorted_members[i][1][1])
 def black_and_white():
-    def show_tiles():
+    def show_tiles(): #타일 표시
         print('            ', ",".join(map(str, list_com_color)))
         print('컴퓨터 타일:', ",".join(map(str, list_com_number[0:round-1])))
         print('당신의 타일:', ",".join(map(str, list_player_sug)))
         print('\n남은 타일:',",".join(map(str, list_player)))
-    def after_show_tiles():
+    def after_show_tiles(): #숫자 제시 후 타일 표시
         clear()
         print('[당신은 ', p,'를 제시하셨습니다]',sep='')
         print('----------- Round:', round,'------------')
@@ -148,15 +167,14 @@ def black_and_white():
         print('            ', ",".join(map(str, list_com_color)))
         print('컴퓨터 타일:', ",".join(map(str, list_com_number)))
         print('당신의 타일:', ",".join(map(str, list_player_sug)),'\n')
-    loading()
+    loading() #로딩
     load_members()
-    split()
+    split() #스플릿
     clear()
+    username, burrito, members = login(load_members())
     print('[ 게임을 시작하겠습니다 ]\n')
-    username, tries, wins, chips, members = 0, 0, 0, 0, 0
     play_more = True
     while play_more == True:
-        tries += 1
         score_player = 0
         score_com = 0
 
@@ -184,15 +202,22 @@ def black_and_white():
             after_show_tiles()
 
             if list_player_sug[round-1] > list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 != int(list_com_number[round-1]) % 2:
+                if list_player_sug[round-1] ==9 and list_com_number[round-1] ==0:
+                    print('웁스! 0이 9를 이겼습니다!')
+                    print('컴퓨터가 3점을 획득하였습니다!')
+                    score_com += 3
+                elif list_player_sug[round-1] % 2 != int(list_com_number[round-1]) % 2:
                     print('당신이 2점을 획득하셨습니다!')
                     score_player +=2
                 else:
                     print('당신이 1점을 획득하셨습니다!')
                     score_player +=1
-
             if list_player_sug[round-1] < list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 != int(list_com_number[round-1]) % 2:
+                if list_player_sug[round-1] ==0 and list_com_number[round-1] ==9:
+                    print('와우! 0이 9를 이겼습니다!')
+                    print('당신이 3점을 획득하였습니다!')
+                    score_com += 3
+                elif list_player_sug[round-1] % 2 != int(list_com_number[round-1]) % 2:
                     print('컴퓨터가 2점을 획득하였습니다!')
                     score_com += 2
                 else:
@@ -208,30 +233,29 @@ def black_and_white():
                 print('3초 후 다음 라운드로 넘어가겠습니다.')
                 time.sleep(3)
                 clear()
-
+        time.sleep(3)
+        clear()
         print('#최종결과#')
         time.sleep(1)
         if score_player < score_com:
-            print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 당신이 패배하였습니다!')
+            print('당신점수 = ',score_player ,' : 컴퓨터 점수 = ', score_com,' 으로 당신이 패배하였습니다!',sep='')
             print('당신은 ', abs(score_player - score_com), ' 개의 부리또를 잃으셨습니다.')
-            chips -= abs(score_player - score_com)
-        if score_com < score_player:
-            wins += 1
-            print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 당신이 승리하셨습니다!')
-            print('당신은 ', abs(score_player - score_com), ' 개의 부리또를 얻으셨습니다.')
-            chips += abs(score_player - score_com)
+            burrito -= abs(score_player - score_com)
+
+        elif score_com < score_player:
+            print('당신점수 = ',score_player ,' : 컴퓨터 점수 = ', score_com,' 으로 당신이 승리하셨습니다!',sep='')
+            print('당신은 ', abs(score_player - score_com), '개의 부리또를 얻으셨습니다.',sep='')
+            burrito += abs(score_player - score_com)
+
         else:
-            wins += 0.5
-            print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 무승부하셨습니다!')
+            print('당신점수 = ',score_player ,' : 컴퓨터 점수 = ', score_com,' 으로 무승부하셨습니다!',sep='')
 
-        members[username] = (members[username][0], tries, wins, chips)
-        print('현재 당신이 보유한 부리또는 ', chips,'개 입니다.')
-        show_top5(members)
-
-        play_more = more('계속해서 플레이 하시겠습니까?')
+        members[username] = (members[username][0], burrito)
+        print('현재 당신이 보유한 부리또는 ', burrito,'개 입니다.',sep='')
+        ag_show_top5(members)
+        play_more = more('\n계속해서 플레이 하시겠습니까? (y/n)')
 
     store_members(members)
     print('다음에 또 찾아주세요!')
 
-
-black_and_white()
+black_and_white() #게임 실행
