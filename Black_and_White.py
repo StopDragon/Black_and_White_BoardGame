@@ -62,7 +62,7 @@ def gamerulse():
     print('ex) 10 vs 8로 `player`가 이겼다면 10 - 8 = 2 즉, `Burrito`2개를 획득합니다.')
     answer = input('처음으로 돌아가려면 Enter을 누르세요.')
     while not (answer == ''):
-        answer = input(message)
+        answer = input('처음으로 돌아가려면 Enter을 누르세요.')
     if answer == '':
         split()
 
@@ -173,14 +173,14 @@ def black_and_white():
             print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com)
             print('--------------------')
             print(list_com_color)
-            print(list_player_sug)
-            p = input('보유한 타일 중 제시할 타일을 입력해주세요 (0~9까지만 입력가능)')
+            print('보유한 타일 중 제시할 타일을 입력해주세요 (0~9까지만 입력가능)')
             print('남은 타일:', list_player)
+            p = input()
             while not(p.isdigit) or not( 0 <= int(p) <= 9) or p in list_player:
                 p = input('다시 입력해주세요')
                 print('남은 타일:', list_player)
-            list_player.remove(p)
-            list_player_sug.append(p)
+            list_player.remove(int(p))
+            list_player_sug.append(int(p))
             print('당신은 ', p,'를 제시하셨습니다')
             print('결과는...')
             for x in range(3,0,-1):
@@ -193,7 +193,7 @@ def black_and_white():
             time.sleep(1)
 
             if list_player_sug[round-1] > list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 == list_com_number[0] % 2:
+                if list_player_sug[round-1] % 2 != list_com_number[0] % 2:
                     print('당신이 2점을 획득하셨습니다!')
                     score_player +=2
                 else:
@@ -201,14 +201,14 @@ def black_and_white():
                     score_player +=1
 
             if list_player_sug[round-1] < list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 == list_com_number[0] % 2:
+                if list_player_sug[round-1] % 2 != list_com_number[0] % 2:
                     print('컴퓨터가 2점을 획득하였습니다!')
                     score_com += 2
                 else:
                     print('컴퓨터가 1점을 획득하였습니다!')
                     score_com += 1
 
-            else:
+            if list_player_sug[round-1] == list_com_number[round-1]:
                 print('무승부하였습니다.')
 
             time.sleep(1)
