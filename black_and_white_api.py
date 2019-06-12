@@ -1,17 +1,22 @@
-# -*- coding: utf-8 -*-
-import time, os
-clear = os.system('cls')
+#-*- coding: utf-8 -*-
+import time
+import random
 
 def clear():
     print("\n" * 100)
 
 def loading():
-    for i in range(20):
-        print('\r절 대 로 딩 해 @(^0 ^)' + '=' * i + '@', end='')
+    for _ in range(3):
+        print('\r절 대 로 딩 해 @(^O ^)@', end='')
+        time.sleep(0.5)
+        print('\r절 대 로 딩 해 @==(^O ^)@', end='')
+        time.sleep(0.5)
+        print('\r절 대 로 딩 해 @(^ O^)@', end='')
+        time.sleep(0.5)
+        print('\r절 대 로 딩 해 @(^ O^)==@', end='')
         time.sleep(0.5)
 
 def split():
-    loading()
     print('\n\n')
     print('______  _               _                        _   _    _  _      _  _         ')
     print('| ___ \| |             | |                      | | | |  | || |    (_)| |        ')
@@ -31,13 +36,12 @@ def split():
     splitanswer = input('번호를 입력하세요:')
     while not (answer == '1' or answer == '2' or answer == '3' or answer == '0'):
         splitanswer = input('번호를 입력하세요:')
-    #if splitanswer == '0':
-        #gamerulse()
-    #elif splitanswer == '1':
-    #elif splitanswer == '2':
-        #show_top5(members)
-    #elif splitanswer == '3':
-        #raise SystemExit
+    if splitanswer == '0':
+        gamerulse()
+    elif splitanswer == '2':
+        show_top5(members)
+    elif splitanswer == '3':
+        raise SystemExit
 
 def gamerulse():
     clear()
@@ -75,4 +79,49 @@ def load_members():
         name, passwd, tries, wins, chips = line.strip('\n').split(',')
         members[name] = (passwd,int(tries),float(wins),int(chips))
     file.close()
-    return members  #test
+    return members
+
+def login(members):
+    username = input("아이디를 입력해주세요: (최대 16글자) ")
+    while len(username) > 16:
+        username = input("아이디을 다시 입력해주세요: (최대 16글자) ")
+    trypasswd = input("비밀번호를 입력해주세요: ")
+    if members.get(username): # username이 members에 존재할 때
+        if trypasswd == members[username][0]:   # trypasswd와 username가 일치 할 때
+            tries = members[username][1]
+            wins = members[username][2]
+            chips = members[username][3]
+            print('You played ' + str(tries) + ' games and won ' + str(wins) + ' of them.')
+            print('Your all-time winning percentage is ' + str(divide(wins,tries)) + ' %')
+            if chips >= 0:
+                print('You have ' + str(chips) + ' chips.')
+            else:
+                print('You owe ' + str(abs(chips)) + ' chips.')
+            return username, tries, wins, chips, members
+        else:   # 비밀번호가 일치하지 않을 때
+            return login(members)
+    else:   # username이 members에 존재하지 않을 때
+        print("This name(", username, ") doesn't register",sep='')
+        answerregister = input('Do you want to register?(y/n)')
+        if answerregister == 'y':
+            print('Your name is', username)
+            registerpw()
+            if registerpasswd == reregisterpasswd:
+                members[username] = (registerpasswd, 0,0,0)
+                return username, 0, 0, 0, members
+            else:
+                registerpw()
+        elif answerregister == 'n':
+            login(members)
+        else:
+            answerregister = input('Do you want to register?(y/n)')
+
+def registerpw():
+    registerpasswd = input('Enter your password:')
+    reregisterpasswd = input('Enter your password again:')
+
+
+def make_COM_list():
+    deck = [[0, '□'], [1, '■'], [2, '□'], [3, '■'], [4, '□'], [5, '■'], [6, '□'] ,[7, '■'], [8, '□'], [9, '■']]
+    random.shuffle(deck)
+    return deck
