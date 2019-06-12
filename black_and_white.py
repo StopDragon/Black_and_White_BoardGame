@@ -45,7 +45,6 @@ def split():
         show_top5(members)
     elif splitanswer == '3':
         raise SystemExit
-    
 
 def gamerulse():
     clear()
@@ -70,9 +69,9 @@ def store_members(members):
     file = open("members.txt","w")
     names = members.keys()
     for name in names:
-        passwd, tries, wins, chips = members[name]
+        passwd, tries, wins, Burrito = members[name]
         line = name + ',' + passwd + ',' + \
-               str(tries) + ',' + str(wins) + "," + str(chips) + '\n'              
+               str(tries) + ',' + str(wins) + "," + str(Burrito) + '\n'              
         file.write(line)
     file.close()
 
@@ -80,8 +79,8 @@ def load_members():
     file = open("members.txt","r")
     members = {}
     for line in file:
-        name, passwd, tries, wins, chips = line.strip('\n').split(',')
-        members[name] = (passwd,int(tries),float(wins),int(chips))
+        name, passwd, tries, wins, Burrito = line.strip('\n').split(',')
+        members[name] = (passwd,int(tries),float(wins),int(Burrito))
     file.close()
     return members  
 
@@ -94,14 +93,14 @@ def login(members):
         if trypasswd == members[username][0]:   # trypasswd와 username가 일치 할 때
             tries = members[username][1]
             wins = members[username][2]
-            chips = members[username][3]
+            Burrito = members[username][3]
             print('You played ' + str(tries) + ' games and won ' + str(wins) + ' of them.')
             print('Your all-time winning percentage is ' + str(divide(wins,tries)) + ' %')
-            if chips >= 0:
-                print('You have ' + str(chips) + ' chips.')
+            if Burrito >= 0:
+                print('You have ' + str(Burrito) + ' Burritos.')
             else:
-                print('You owe ' + str(abs(chips)) + ' chips.')
-            return username, tries, wins, chips, members
+                print('You owe ' + str(abs(Burrito)) + ' Burritos.')
+            return username, tries, wins, Burrito, members
         else:   # 비밀번호가 일치하지 않을 때
             return login(members)
     else:   # username이 members에 존재하지 않을 때
@@ -136,10 +135,11 @@ def make_COM_list():
 
 def black_and_white():
     loading()
+    load_members()
     split()
 
     print('게임을 시작하겠습니다.')
-    username, tries, wins, chips, members = login(load_members())
+    username, tries, wins, Burrito, members = login(members)
     play_more = True
     while play_more == True:
         tries += 1
@@ -211,18 +211,18 @@ def black_and_white():
         if score_player < score_com:
             print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 당신이 패배하였습니다!')
             print('당신은 ', abs(score_player - score_com), ' 개의 부리또를 잃으셨습니다.')
-            chips -= abs(score_player - score_com)
+            Burrito -= abs(score_player - score_com)
         if score_com < score_player:
             wins += 1
             print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 당신이 승리하셨습니다!')
             print('당신은 ', abs(score_player - score_com), ' 개의 부리또를 얻으셨습니다.')
-            chips += abs(score_player - score_com)
+            Burrito += abs(score_player - score_com)
         else:
             wins += 0.5
             print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 무승부하셨습니다!')
 
-        members[username] = (members[username][0], tries, wins, chips)
-        print('현재 당신이 보유한 부리또는 ', chips,'개 입니다.')
+        members[username] = (members[username][0], tries, wins, Burrito)
+        print('현재 당신이 보유한 부리또는 ', Burrito,'개 입니다.')
         show_top5(members)
 
         play_more = more('계속해서 플레이 하시겠습니까?')
