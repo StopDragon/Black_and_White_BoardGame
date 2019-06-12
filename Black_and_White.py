@@ -156,7 +156,6 @@ def black_and_white():
         tries += 1
         score_player = 0
         score_com = 0
-        print('-----')
 
         list_com = make_COM_list()
         list_com_color = []
@@ -166,7 +165,7 @@ def black_and_white():
         for x in list_com:
             list_com_color.append(x[1])
 
-        for round in range(1,10):
+        for round in range(1,11):
             list_com_number.append(list_com[round-1][0])
             print('----------Round:', round,'----------')
             print('현재 점수 현황')
@@ -175,17 +174,16 @@ def black_and_white():
             for x in list_com_color:
                 print(x, end='')
 
-            print('\n')
             if round > 1:
                 print(list_com_number[0:round-1])
                 print(list_player_sug[0:round-1])
-            print('보유한 타일 중 제시할 타일을 입력해주세요 (0~9까지만 입력가능)')
+            print('\n')
             print('남은 타일:', list_player)
-            p = input()
-            while not(p.isdigit) or not( 0 <= int(p) <= 9) or p in list_player:
-                print('다시 입력해주세요')
+            p = input('보유한 타일 중 제시할 타일을 입력해주세요 (0~9까지만 입력가능)')
+
+            while not(p.isdigit()) or not( 0 <= int(p) <= 9) or p in list_player:
                 print('남은 타일:', list_player)
-                p = input()
+                p = input('다시 입력해주세요')
             list_player.remove(int(p))
             list_player_sug.append(int(p))
             print('당신은 ', p,'를 제시하셨습니다')
@@ -200,7 +198,7 @@ def black_and_white():
             time.sleep(1)
 
             if list_player_sug[round-1] > list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 != list_com_number[round-1][0] % 2:
+                if list_player_sug[round-1] % 2 != int(list_com_number[round-1]) % 2:
                     print('당신이 2점을 획득하셨습니다!')
                     score_player +=2
                 else:
@@ -208,7 +206,7 @@ def black_and_white():
                     score_player +=1
 
             if list_player_sug[round-1] < list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 != list_com_number[round-1][0] % 2:
+                if list_player_sug[round-1] % 2 != int(list_com_number[round-1]) % 2:
                     print('컴퓨터가 2점을 획득하였습니다!')
                     score_com += 2
                 else:
@@ -220,11 +218,12 @@ def black_and_white():
 
             time.sleep(1)
 
-            if round <9:
+            if round <10:
                 print('다음 라운드로 넘어가겠습니다.')
                 time.sleep(1)
 
         print('#최종결과#')
+        time.sleep(1)
         if score_player < score_com:
             print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com,' 으로 당신이 패배하였습니다!')
             print('당신은 ', abs(score_player - score_com), ' 개의 부리또를 잃으셨습니다.')
