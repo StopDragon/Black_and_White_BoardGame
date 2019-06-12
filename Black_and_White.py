@@ -172,13 +172,20 @@ def black_and_white():
             print('현재 점수 현황')
             print('당신점수 - ',score_player ,' : 컴퓨터 점수 - ', score_com)
             print('--------------------')
-            print(list_com_color)
+            for x in list_com_color:
+                print(x, end='')
+
+            print('/n')
+            if round > 1:
+                print(list_com_number[0:round-1])
+                print(list_player_sug[0:round-1])
             print('보유한 타일 중 제시할 타일을 입력해주세요 (0~9까지만 입력가능)')
             print('남은 타일:', list_player)
             p = input()
             while not(p.isdigit) or not( 0 <= int(p) <= 9) or p in list_player:
-                p = input('다시 입력해주세요')
+                print('다시 입력해주세요')
                 print('남은 타일:', list_player)
+                p = input()
             list_player.remove(int(p))
             list_player_sug.append(int(p))
             print('당신은 ', p,'를 제시하셨습니다')
@@ -193,7 +200,7 @@ def black_and_white():
             time.sleep(1)
 
             if list_player_sug[round-1] > list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 != list_com_number[0] % 2:
+                if list_player_sug[round-1] % 2 != list_com_number[round-1][0] % 2:
                     print('당신이 2점을 획득하셨습니다!')
                     score_player +=2
                 else:
@@ -201,7 +208,7 @@ def black_and_white():
                     score_player +=1
 
             if list_player_sug[round-1] < list_com_number[round-1]:
-                if list_player_sug[round-1] % 2 != list_com_number[0] % 2:
+                if list_player_sug[round-1] % 2 != list_com_number[round-1][0] % 2:
                     print('컴퓨터가 2점을 획득하였습니다!')
                     score_com += 2
                 else:
